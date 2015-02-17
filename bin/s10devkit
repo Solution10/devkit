@@ -8,10 +8,9 @@
 require __DIR__.'/../vendor/autoload.php';
 
 use Symfony\Component\Console\Application;
-use Solution10\Devkit\MakefileCommand;
-use Solution10\Devkit\GitignoreCommand;
 
 $application = new Application('Solution10 Devkit', '1.0');
-$application->add(new MakefileCommand);
-$application->add(new GitignoreCommand);
+$application->add(new Solution10\Devkit\MakefileCommand);
+$application->add(new Solution10\Devkit\GitignoreCommand);
+$application->add(new Solution10\Devkit\LegalCommand());
 $application->run();

@@ -42,4 +42,22 @@ abstract class DevkitCommand extends Command
     {
         return realpath(__DIR__.'/../templates');
     }
+
+    /**
+     * Returns the containing projects composer.json file contents.
+     *
+     * @return  \stdClass
+     */
+    protected function composer()
+    {
+        $containerDir = $this->containerDirectory();
+        if (basename($containerDir) !== 'testbed') {
+            $filename = $containerDir.'/composer.json';
+        } else {
+            $filename = $containerDir.'/../composer.json';
+        }
+
+        return json_decode(file_get_contents($filename));
+    }
+
 }

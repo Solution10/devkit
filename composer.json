@@ -7,6 +7,10 @@
         {
             "name": "Alex Gisby",
             "email": "alex@solution10.com"
+        },
+        {
+            "name": "Alexander Gisby",
+            "email": "alex.gisby@bbc.co.uk"
         }
     ],
     "require": {
