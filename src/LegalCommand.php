@@ -19,21 +19,7 @@ class LegalCommand extends DevkitCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $files = ['LICENSE.md', 'CONTRIBUTING.md', 'readme.md'];
-
-        foreach ($files as $file) {
-            // This one's simple, simply copy the file from one location
-            $sourceFile = $this->templatesDirectory().'/'.$file;
-            $destFile = $this->containerDirectory().'/'.$file;
-
-            if (!file_exists($destFile) || $input->getOption('force')) {
-                (@copy($sourceFile, $destFile)) ?
-                    $output->writeln('<info>Created '.$file.' at: ' . realpath($destFile) . '</info>')
-                    : $output->writeln('<error>Unable to copy '.$file.' :(</error>');
-            } else {
-                $output->writeln('<error>'.$file.' already exists, will not overwrite without --force</error>');
-            }
-        }
+        $this->copyTemplates(['LICENSE.md', 'CONTRIBUTING.md', 'readme.md'], $input, $output);
 
         // Edit the copyright to have this years date
         $licenseContents = file_get_contents($this->containerDirectory().'/LICENSE.md');

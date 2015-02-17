@@ -19,17 +19,6 @@ class GitignoreCommand extends DevkitCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        // This one's simple, simply copy the file from one location
-        $sourceFile = $this->templatesDirectory().'/gitignore';
-        $destFile = $this->containerDirectory().'/.gitignore';
-
-        if (!file_exists($destFile) || $input->getOption('force')) {
-            (@copy($sourceFile, $destFile))?
-                $output->writeln('<info>Created .gitignore at: '.realpath($destFile).'</info>')
-                : $output->writeln('<error>Unable to copy .gitignore :(</error>')
-            ;
-        } else {
-            $output->writeln('<error>.gitignore already exists, will not overwrite without --force</error>');
-        }
+        $this->copyTemplates(['.gitignore'], $input, $output);
     }
 }

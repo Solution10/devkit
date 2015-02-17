@@ -7,10 +7,6 @@
         {
             "name": "Alex Gisby",
             "email": "alex@solution10.com"
-        },
-        {
-            "name": "Alexander Gisby",
-            "email": "alex.gisby@bbc.co.uk"
         }
     ],
     "require": {
@@ -24,5 +20,8 @@
         "psr-4": {
             "Solution10\\Devkit\\": "src"
         }
-    }
+    },
+    "bin": [
+        "bin/s10devkit"
+    ]
 }

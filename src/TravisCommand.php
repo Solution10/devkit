@@ -6,19 +6,19 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class MakefileCommand extends DevkitCommand
+class TravisCommand extends DevkitCommand
 {
     protected function configure()
     {
         $this
-            ->setName('makefile')
-            ->setDescription('Generates a makefile for running unit tests, creating API docs and the like')
-            ->addOption('force', 'f', InputOption::VALUE_NONE, 'Force overwrite of existing Makefile')
+            ->setName('travis')
+            ->setDescription('Creates a .travis.yml file that works for most s10 packages')
+            ->addOption('force', 'f', InputOption::VALUE_NONE, 'Force overwrite of existing .travis.yml')
         ;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $this->copyTemplates(['Makefile'], $input, $output);
+        $this->copyTemplates(['.travis.yml'], $input, $output);
     }
 }

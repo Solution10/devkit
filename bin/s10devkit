@@ -12,5 +12,6 @@ use Symfony\Component\Console\Application;
 $application = new Application('Solution10 Devkit', '1.0');
 $application->add(new Solution10\Devkit\MakefileCommand);
 $application->add(new Solution10\Devkit\GitignoreCommand);
-$application->add(new Solution10\Devkit\LegalCommand());
+$application->add(new Solution10\Devkit\LegalCommand);
+$application->add(new \Solution10\Devkit\TravisCommand);
 $application->run();

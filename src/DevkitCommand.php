@@ -3,6 +3,8 @@
 namespace Solution10\Devkit;
 
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
 
 abstract class DevkitCommand extends Command
 {
@@ -58,6 +60,30 @@ abstract class DevkitCommand extends Command
         }
 
         return json_decode(file_get_contents($filename));
+    }
+
+    /**
+     * Copies an array of files from the templates directory into the target directory.
+     * Used by a lot of commands.
+     *
+     * @param   array               $files
+     * @param   InputInterface      $input
+     * @param   OutputInterface     $output
+     */
+    protected function copyTemplates(array $files = [], InputInterface $input, OutputInterface $output)
+    {
+        foreach ($files as $file) {
+            $sourceFile = $this->templatesDirectory().'/'.$file;
+            $destFile = $this->containerDirectory().'/'.$file;
+
+            if (!file_exists($destFile) || $input->getOption('force')) {
+                (@copy($sourceFile, $destFile)) ?
+                    $output->writeln('<info>Created '.$file.' at: ' . realpath($destFile) . '</info>')
+                    : $output->writeln('<error>Unable to copy '.$file.' :(</error>');
+            } else {
+                $output->writeln('<error>'.$file.' already exists, will not overwrite without --force</error>');
+            }
+        }
     }
 
 }
