@@ -1,0 +1,24 @@
+{
+    "name": "solution10/devkit",
+    "description": "Aides in the development of the S10 packages by grouping dev tools together into one package",
+    "minimum-stability": "stable",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alex Gisby",
+            "email": "alex@solution10.com"
+        }
+    ],
+    "require": {
+        "phpunit/phpunit": "~4.1",
+        "squizlabs/php_codesniffer": "~1.0",
+        "satooshi/php-coveralls": "dev-master",
+        "apigen/apigen": "~4.0",
+        "symfony/console": "~2.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "Solution10\\Devkit\\": "src"
+        }
+    }
+}

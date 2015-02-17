@@ -1,0 +1,15 @@
+#!/usr/bin/env php
+<?php
+
+/**
+ * Devkit App Entry Point
+ */
+
+require __DIR__.'/../vendor/autoload.php';
+
+use Solution10\Devkit\MakefileCommand;
+use Symfony\Component\Console\Application;
+
+$application = new Application('Solution10 Devkit', '1.0');
+$application->add(new MakefileCommand);
+$application->run();

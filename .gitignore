@@ -1,0 +1,9 @@
+# Filesystem crap
+.DS_Store
+
+# IDE crap
+.idea
+
+# Generated files/folders
+vendor/
+testbed/
