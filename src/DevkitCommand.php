@@ -25,7 +25,7 @@ abstract class DevkitCommand extends Command
     {
         $candidatePath = realpath(__DIR__.'/../../..');
         if (basename($candidatePath) === 'vendor') {
-            return $candidatePath;
+            return $candidatePath.'/..';
         } else {
             $testbed = realpath(__DIR__.'/..').'/testbed';
             if (!file_exists($testbed)) {
