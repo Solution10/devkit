@@ -21,4 +21,5 @@ $application->add(new Solution10\Devkit\GitignoreCommand);
 $application->add(new Solution10\Devkit\LegalCommand);
 $application->add(new \Solution10\Devkit\TravisCommand);
 $application->add(new \Solution10\Devkit\DirectoriesCommand);
+$application->add(new \Solution10\Devkit\PHPUnitCommand);
 $application->run();
