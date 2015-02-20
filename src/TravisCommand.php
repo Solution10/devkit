@@ -19,6 +19,6 @@ class TravisCommand extends DevkitCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $this->copyTemplates(['.travis.yml'], $input, $output);
+        return $this->copyTemplates(['.travis.yml'], $input, $output);
     }
 }

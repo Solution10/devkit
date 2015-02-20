@@ -69,9 +69,11 @@ abstract class DevkitCommand extends Command
      * @param   array               $files
      * @param   InputInterface      $input
      * @param   OutputInterface     $output
+     * @return  bool
      */
-    protected function copyTemplates(array $files = [], InputInterface $input, OutputInterface $output)
+    protected function copyTemplates(array $files, InputInterface $input, OutputInterface $output)
     {
+        $success = true;
         foreach ($files as $file) {
             $sourceFile = $this->templatesDirectory().'/'.$file;
             $destFile = $this->containerDirectory().'/'.$file;
@@ -82,8 +84,9 @@ abstract class DevkitCommand extends Command
                     : $output->writeln('<error>Unable to copy '.$file.' :(</error>');
             } else {
                 $output->writeln('<error>'.$file.' already exists, will not overwrite without --force</error>');
+                $success = false;
             }
         }
+        return $success ? 0 : 1; // this is used as a return code, so 0 is good
     }
-
 }

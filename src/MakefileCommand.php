@@ -19,6 +19,6 @@ class MakefileCommand extends DevkitCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $this->copyTemplates(['Makefile'], $input, $output);
+        return $this->copyTemplates(['Makefile'], $input, $output);
     }
 }

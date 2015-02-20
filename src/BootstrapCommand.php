@@ -26,10 +26,17 @@ class BootstrapCommand extends DevkitCommand
 
         foreach ($commands as $commandName) {
             $command = $this->getApplication()->find($commandName);
-            $command->run(new ArrayInput([
+            $returnCode = $command->run(new ArrayInput([
                 'command' => $commandName
             ]), $output);
+
             $output->writeln('');
+
+            if ($returnCode !== 0) {
+                $output->writeln('Errors detected, aborting.');
+                $output->writeln('');
+                return 1;
+            }
         }
     }
 }

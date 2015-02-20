@@ -26,6 +26,7 @@ class DirectoriesCommand extends DevkitCommand
                 $output->writeln('<info>Created directory '.$fullpath.'</info>');
             } else {
                 $output->writeln('<error>Directory '.$fullpath.' already exists!</error>');
+                return 1;
             }
         }
     }

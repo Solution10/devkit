@@ -19,6 +19,6 @@ class GitignoreCommand extends DevkitCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $this->copyTemplates(['.gitignore'], $input, $output);
+        return $this->copyTemplates(['.gitignore'], $input, $output);
     }
 }
