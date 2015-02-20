@@ -31,6 +31,7 @@ class PHPUnitCommand extends DevkitCommand
             $phpunitContents = str_replace(array_keys($replace), array_values($replace), $phpunitContents);
             file_put_contents($this->containerDirectory() . '/phpunit.xml.dist', $phpunitContents);
             $output->writeln('<info>Updated phpunit.xml.dist</info>');
+        } else {
             return 1;
         }
     }
